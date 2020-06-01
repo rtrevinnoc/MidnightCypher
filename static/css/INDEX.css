@@ -23,8 +23,8 @@ along with FUTURE.  If not, see <https://www.gnu.org/licenses/>. */
 
 textarea {
 	resize: none;
-	width: 75%;
-	height: 50%;
+	width: 90%;
+	height: 70%;
 	font-family: 'Source Sans Pro';
 	font-size: 15px;
 	background-color: #CCC;
@@ -146,7 +146,7 @@ textarea {
 	text-align: justify;
 	height: calc(100% - 65px);
 	z-index: -999;
-	display: inline flex;
+	display: flex;
 	font-family: 'Source Sans Pro';
 	font-weight: 400;
 	font-style: normal;
