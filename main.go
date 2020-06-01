@@ -191,6 +191,12 @@ func main() {
     		b, _ := io.Copy(img, resp.Body)
     		fmt.Println("File size: ", b)	
 
+		//extraHeaders := map[string]string{
+			//"Content-Disposition": `attachment; filename="gopher.png"`,
+		//}
+
+		//c.DataFromReader(http.StatusOK, resp.ContentLength, resp.Header.Get("Content-Type"), resp.Body, extraHeaders)
+
 		c.JSON(http.StatusOK, gin.H{"response": c.PostForm("secretMessage"), "rand": futureImageUrl, "fileSize": b})
 	})
 
