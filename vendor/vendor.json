@@ -84,6 +84,12 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "GtamqiJoL7PGHsN454AoffBFMa8=",
+			"path": "golang.org/x/net/context",
+			"revision": "3c3fba18258b2a1398a025a6aeb7374d2a470009",
+			"revisionTime": "2020-05-27T13:41:25Z"
+		},
+		{
 			"path": "heroku.yml",
 			"revision": ""
 		},
