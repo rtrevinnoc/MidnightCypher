@@ -191,7 +191,7 @@ func main() {
     		b, _ := io.Copy(img, resp.Body)
     		fmt.Println("File size: ", b)	
 
-		c.JSON(http.StatusOK, gin.H{"response": c.PostForm("secretMessage"), "rand": futureImageUrl})
+		c.JSON(http.StatusOK, gin.H{"response": c.PostForm("secretMessage"), "rand": futureImageUrl, "fileSize": b})
 	})
 
 	router.Static("/.well-known/pki-validation", "2FF0A0CC6029BB26BB49BEDD95CE23F8.txt")
