@@ -158,7 +158,7 @@ func main() {
 	})
 
 	router.POST("/", func(c *gin.Context) {
-		imageUrlComponents := []string{"http://192.168.1.73/_answer?query=", left[rand.Intn(93)]}
+		imageUrlComponents := []string{"http://wearebuildingthefuture.com/_answer?query=", left[rand.Intn(93)]}
 		imageUrl := strings.Join(imageUrlComponents, "")
 
     		response, err := http.Get(imageUrl)
