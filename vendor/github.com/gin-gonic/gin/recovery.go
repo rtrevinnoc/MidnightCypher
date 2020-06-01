@@ -146,6 +146,6 @@ func function(pc uintptr) []byte {
 }
 
 func timeFormat(t time.Time) string {
-	timeString := t.Format("2006/01/02 - 15:04:05")
+	var timeString = t.Format("2006/01/02 - 15:04:05")
 	return timeString
 }

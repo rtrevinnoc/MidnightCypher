@@ -90,13 +90,13 @@ func filterFlags(content string) string {
 }
 
 func chooseData(custom, wildcard interface{}) interface{} {
-	if custom != nil {
-		return custom
-	}
-	if wildcard != nil {
+	if custom == nil {
+		if wildcard == nil {
+			panic("negotiation config is invalid")
+		}
 		return wildcard
 	}
-	panic("negotiation config is invalid")
+	return custom
 }
 
 func parseAccept(acceptHeader string) []string {
@@ -127,7 +127,8 @@ func joinPaths(absolutePath, relativePath string) string {
 	}
 
 	finalPath := path.Join(absolutePath, relativePath)
-	if lastChar(relativePath) == '/' && lastChar(finalPath) != '/' {
+	appendSlash := lastChar(relativePath) == '/' && lastChar(finalPath) != '/'
+	if appendSlash {
 		return finalPath + "/"
 	}
 	return finalPath
