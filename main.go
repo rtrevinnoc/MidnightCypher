@@ -167,11 +167,13 @@ func main() {
 			return
 		}
 		hidden, _ := jsteg.Reveal(file)
-		c.JSON(http.StatusOK, gin.H{"message": string(hidden), "status": http.StatusOK})
+		c.HTML(http.StatusOK, "decyphered.tmpl.html", gin.H{
+			"recoveredMessage": string(hidden),
+		})
 	})
 
 	router.POST("/encode", func(c *gin.Context) {
-		imageUrlComponents := []string{"http://192.168.1.73/_answer?query=", left[rand.Intn(93)]}
+		imageUrlComponents := []string{"http://wearebuildingthefuture.com/_answer?query=", left[rand.Intn(93)]}
 		imageUrl := strings.Join(imageUrlComponents, "")
 
 		response, error1 := http.Get(imageUrl)

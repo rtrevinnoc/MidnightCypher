@@ -14,12 +14,12 @@
 
 	<div id="openEncrypt" class="modalDialog">
 		<div>
-			<h2>Cypher an Image</h2>
+			<h2>Cypher a Message</h2>
 			<form name="messageForm" method="post" action="encode">
-				<textarea id="secretMessage" cols="80" rows="20" name="secretMessage"></textarea>
+				<textarea id="secretMessage" name="secretMessage" placeholder="Type a Message"></textarea><br />
 				<input type="submit" value="Cypher" class="sendbutton">
 			</form>
-			<a href="#closeEncrypt">Close</a>
+			<a class="closeButton" href="#closeEncrypt">Close this Window</a>
 		</div>
 	</div>
 	
@@ -32,7 +32,7 @@
 				<label for="decodeMessage">Select a cyphered image</label>
 				<input type="submit" value="Decypher" class="sendbutton">
 			</form>
-			<a href="#closeDecrypt">Close</a>
+			<a class="closeButton" href="#closeDecrypt">Close this Window</a>
 		</div>
 	</div>
 </body>
