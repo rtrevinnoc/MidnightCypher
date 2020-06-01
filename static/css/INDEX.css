@@ -90,7 +90,7 @@ textarea {
 	font-family: 'Source Sans Pro';
 	font-weight: 400;
 	font-style: italic;
-	font-size: 60px;
+	font-size: calc(3vw + 1.5vh);
 	pointer-events: all;
 }
 
