@@ -1,1 +1,1 @@
-web: bin/MidnightCypher
+web: bin/midnight-cypher
