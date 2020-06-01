@@ -103,7 +103,7 @@ type Engine struct {
 	// See the PR #1817 and issue #1644
 	RemoveExtraSlash bool
 
-	//delims           render.Delims
+	delims           render.Delims
 	secureJSONPrefix string
 	HTMLRender       render.HTMLRender
 	FuncMap          template.FuncMap
