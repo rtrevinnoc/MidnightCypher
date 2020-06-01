@@ -3,6 +3,34 @@
 	"ignore": "test",
 	"package": [
 		{
+			"path": "2FF0A0CC6029BB26BB49BEDD95CE23F8.txt",
+			"revision": ""
+		},
+		{
+			"path": "Dockerfile",
+			"revision": ""
+		},
+		{
+			"path": "Makefile",
+			"revision": ""
+		},
+		{
+			"path": "Procfile",
+			"revision": ""
+		},
+		{
+			"path": "README.md",
+			"revision": ""
+		},
+		{
+			"path": "app.json",
+			"revision": ""
+		},
+		{
+			"path": "bin",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "qlEzrgKgIkh7y0ePm9BNo1cNdXo=",
 			"path": "github.com/gin-contrib/sse",
 			"revision": "43f0f29dbd2b3f0feeebff91fd9cda22db296938",
@@ -45,10 +73,50 @@
 			"revisionTime": "2020-06-01T14:31:57Z"
 		},
 		{
+			"path": "go.mod",
+			"revision": ""
+		},
+		{
+			"path": "go.sum",
+			"revision": ""
+		},
+		{
+			"path": "heroku.yml",
+			"revision": ""
+		},
+		{
+			"path": "image.jpg",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "q/8xzsnfxdOCFQfPZdcVS1IiAAE=",
 			"path": "lukechampine.com/jsteg",
 			"revision": "bde9f913a965fb467ce554883b151c9bccddb7ef",
 			"revisionTime": "2019-06-02T01:45:22Z"
+		},
+		{
+			"path": "main.go",
+			"revision": ""
+		},
+		{
+			"path": "server.csr",
+			"revision": ""
+		},
+		{
+			"path": "server.key",
+			"revision": ""
+		},
+		{
+			"path": "static",
+			"revision": ""
+		},
+		{
+			"path": "templates",
+			"revision": ""
+		},
+		{
+			"path": "vendor",
+			"revision": ""
 		}
 	],
 	"rootPath": "midnight-cypher"

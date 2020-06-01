@@ -1,6 +1,6 @@
 module github.com/heroku/go-getting-started
 
-go 1.12
+go 1.14.3
 
 require (
 	github.com/Bowery/prompt v0.0.0-20190916142128-fa8279994f75 // indirect
