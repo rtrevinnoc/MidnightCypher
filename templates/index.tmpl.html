@@ -3,20 +3,32 @@
 <body>
 	{{template "nav.tmpl.html"}}
 
-
 	<div id="whole_answer">
-		<div id="summary_content">
-		</div>
-		<div id="links_content">
-		</div>
-		<div id="images_content">
-		</div>
-		<div id="maps_content">
-		</div>
-		<div id="welcome">
-			<a id="godfvt" href="https://rtrevinnoc.github.io"></a>
-		</div>
+		<a id="encrypt" href="#openEncrypt">
+			<p>Hide a message!</p>
+		</a>
+		<a id="decrypt" href="#openDecrypt">
+			<p>Uncover a secret!</p>
+		</a>
 	</div>
 
+	<div id="openEncrypt" class="modalDialog">
+		<div>
+			<h2>Cypher an Image</h2>
+			<form name="messageForm" method="post">
+				<textarea id="secretMessage" cols="80" rows="20" name="secretMessage"></textarea>
+				<input type="submit" value="Cypher" class="sendbutton">
+			</form>
+			<a href="#closeEncrypt">Close</a>
+		</div>
+	</div>
+	
+
+	<div id="openDecrypt" class="modalDialog">
+		<div>
+			<h2>Decypher an Image</h2>
+			<a href="#closeDecrypt">Close</a>
+		</div>
+	</div>
 </body>
 </html>
