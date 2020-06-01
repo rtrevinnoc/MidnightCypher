@@ -1,48 +1,9 @@
+# Midnight Cypher
 
-# go-getting-started
+Given the current state of revolt around the world, as the people from all countries have found themselves fed up with injustice, and have finally come out to protest, there is the need to provide them support, and let them speak safely.
 
-A barebones Go app, which can easily be deployed to Heroku.
+The project hereby, called Mignight Cypher allows for freedom of speech where it has been prohibited, as by the usage of steganography it hides messages from plain sight in the least-significant bits of a random image obtained from my secure and private search engine called [FUTURE](https://wearebuildingthefuture.com/) which also leaves no trace of any information processed.
 
-This application supports the [Getting Started with Go on Heroku](https://devcenter.heroku.com/articles/getting-started-with-go) article - check it out.
+Remember, this could potentially save lives, and you can help by cloning the repo and starting your own mirror, as I have reduced bandwidth and processing power.
 
-## Running Locally
-
-Make sure you have [Go](http://golang.org/doc/install) version 1.12 or newer and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
-
-```sh
-$ git clone https://github.com/heroku/go-getting-started.git
-$ cd go-getting-started
-$ go build -o bin/go-getting-started -v . # or `go build -o bin/go-getting-started.exe -v .` in git bash
-github.com/mattn/go-colorable
-gopkg.in/bluesuncorp/validator.v5
-golang.org/x/net/context
-github.com/heroku/x/hmetrics
-github.com/gin-gonic/gin/render
-github.com/manucorporat/sse
-github.com/heroku/x/hmetrics/onload
-github.com/gin-gonic/gin/binding
-github.com/gin-gonic/gin
-github.com/heroku/go-getting-started
-$ heroku local
-```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-## Deploying to Heroku
-
-```sh
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-
-or
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-
-## Documentation
-
-For more information about using Go on Heroku, see these Dev Center articles:
-
-- [Go on Heroku](https://devcenter.heroku.com/categories/go)
+Let's rise.

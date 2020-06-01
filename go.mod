@@ -1,4 +1,4 @@
-module github.com/heroku/go-getting-started
+module https://github.com/rtrevinnoc/MidnightCypher
 
 // +heroku goVersion go1.13
 go 1.14

@@ -1,12 +1,11 @@
 {
-  "name": "Start on Heroku: Go",
-  "description": "Go Getting Started Example App",
+  "name": "MidnightCypher",
+  "description": "Protection Free Speech with Steganography",
   "keywords": [
-    "getting-started",
+    "steganography",
     "go",
-    "sample",
-    "example"
+    "freedom"
   ],
-  "website": "http://github.com/heroku/go-getting-started",
-  "repository": "http://github.com/heroku/go-getting-started"
+  "website": "https://midnightcypher.herokuapp.com",
+  "repository": "https://github.com/rtrevinnoc/MidnightCypher"
 }
