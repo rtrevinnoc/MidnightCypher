@@ -120,63 +120,11 @@ textarea {
 	line-height: 65px;
 	pointer-events: none;
 	z-index: 999;
+	text-align: center;
 }
-
-#eye {
-	margin: auto;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 13px;
-	width: 50px;
-	height: 50px;
-	pointer-events: all;
-	cursor: pointer;
-}
-
-.hex:hover {
-	transition: 0.60s;
-	transform: rotate(180deg);
-}
-
-.hex {
-	margin-top: 12px;
-	width: 40px;
-	height: 24px;
-	position: relative;
-	transition: 0.70s;
-}
-
-.hex:before, .hex:after {
-	content:"";
-	position: absolute;
-}
-
-.hex:before {
-	top: -10px;
-}
-
-.hex:after {
-	bottom: -10px;
-}
-
-.hex.inner {
-	transform: scale(.8, .8);
-	z-index:1;
-}
-.hex.inner2 {
-	transform: scale(.8, .8);
-	z-index:2;
-}
-.hex.inner3 {
-	transform: scale(.8, .8);
-	z-index:2;
-}
-
 
 #title {
-	position: fixed;
-	left: 85px;
+	text-align: center;
 	line-height: 17px;
 	font-size: 35px;
 	font-family: 'Source Sans Pro Light';
@@ -187,19 +135,6 @@ textarea {
 #title a {
 	color: inherit;
 	text-decoration: none;
-}
-
-#sidebar_show {
-	margin: auto;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	right: 25px;
-	height: 100%;
-	pointer-events: all;
-	cursor: pointer;
-	font-family: 'Source Sans Pro';
-	font-weight: lighter;
 }
 
 #whole_answer {
