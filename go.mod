@@ -1,5 +1,6 @@
 module github.com/heroku/go-getting-started
 
+// +heroku goVersion go1.13
 go 1.14
 
 require (
