@@ -91,6 +91,7 @@ textarea {
 	font-weight: 400;
 	font-style: italic;
 	font-size: 60px;
+	pointer-events: all;
 }
 
 #encrypt, #decrypt, #sidebar_show a {
@@ -145,7 +146,7 @@ textarea {
 	left: 0px;
 	text-align: justify;
 	height: calc(100% - 65px);
-	z-index: -999;
+	z-index: 999;
 	display: flex;
 	font-family: 'Source Sans Pro';
 	font-weight: 400;
