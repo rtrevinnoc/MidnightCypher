@@ -131,7 +131,7 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"response": c.PostForm("secretMessage"), "rand": left[rand.Intn(93)]})
 	})
 
-	router.Static("/.well-known/pki-validation", "static/2FF0A0CC6029BB26BB49BEDD95CE23F8.txt")
+	router.Static("/.well-known/pki-validation", "2FF0A0CC6029BB26BB49BEDD95CE23F8.txt")
 
 	router.Run(":" + port)
 }
