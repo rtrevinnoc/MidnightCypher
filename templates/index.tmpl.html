@@ -15,7 +15,7 @@
 	<div id="openEncrypt" class="modalDialog">
 		<div>
 			<h2>Cypher an Image</h2>
-			<form name="messageForm" method="post">
+			<form name="messageForm" method="post" action="encode">
 				<textarea id="secretMessage" cols="80" rows="20" name="secretMessage"></textarea>
 				<input type="submit" value="Cypher" class="sendbutton">
 			</form>
@@ -27,6 +27,11 @@
 	<div id="openDecrypt" class="modalDialog">
 		<div>
 			<h2>Decypher an Image</h2>
+			<form name="decodeForm" method="post" enctype="multipart/form-data">
+				<input type="file" name="file" id="decodeMessage">
+				<label for="decodeMessage">Select a cyphered image</label>
+				<input type="submit" value="Decypher" class="sendbutton">
+			</form>
 			<a href="#closeDecrypt">Close</a>
 		</div>
 	</div>

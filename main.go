@@ -7,7 +7,9 @@ import (
 	"os"
 	"encoding/json"
 	"io/ioutil"
-	"io"
+	"bytes"
+	"image/jpeg"
+	"lukechampine.com/jsteg"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/heroku/x/hmetrics/onload"
@@ -152,52 +154,61 @@ func main() {
 	router.Use(gin.Logger())
 	router.LoadHTMLGlob("templates/*.tmpl.html")
 	router.Static("/static", "static")
+	router.MaxMultipartMemory = 8 << 20
 
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
 
 	router.POST("/", func(c *gin.Context) {
-		imageUrlComponents := []string{"http://wearebuildingthefuture.com/_answer?query=", left[rand.Intn(93)]}
+		file, _, err := c.Request.FormFile("file")
+		if err != nil {
+			c.String(http.StatusBadRequest, fmt.Sprintf("get form err: %s", err.Error()))
+			return
+		}
+		hidden, _ := jsteg.Reveal(file)
+		c.JSON(http.StatusOK, gin.H{"message": string(hidden), "status": http.StatusOK})
+	})
+
+	router.POST("/encode", func(c *gin.Context) {
+		imageUrlComponents := []string{"http://192.168.1.73/_answer?query=", left[rand.Intn(93)]}
 		imageUrl := strings.Join(imageUrlComponents, "")
 
-    		response, err := http.Get(imageUrl)
-    		if err != nil {
-        		log.Fatal(err)
-    		}
-    		defer response.Body.Close()
- 
-    		responseData, err := ioutil.ReadAll(response.Body)
-    		if err != nil {
-        		log.Fatal(err)
-    		}
-		
-		responseString := string(responseData)
-		fmt.Printf(responseString)
- 
+		response, error1 := http.Get(imageUrl)
+		if error1 != nil {
+			log.Fatal(error1)
+		}
+		defer response.Body.Close()
+
+		responseData, error2 := ioutil.ReadAll(response.Body)
+		if error2 != nil {
+			log.Fatal(error2)
+		}
+
 		futureResult := new(FUTUREResult)
 		json.Unmarshal([]byte(responseData), futureResult)
-		fmt.Println(futureResult)
 		listOfImages := futureResult.Result.Images
 		numberOfImages := len(listOfImages) 
 		futureImageUrl := listOfImages[rand.Intn(numberOfImages)]
 
-		img, _ := os.Create("image.jpg")
-    		defer img.Close()
+		response, err := http.Get(futureImageUrl)
+		if err != nil || response.StatusCode != http.StatusOK {
+			c.Status(http.StatusServiceUnavailable)
+			return
+		}
 
-    		resp, _ := http.Get(futureImageUrl)
-    		defer resp.Body.Close()
+		reader := response.Body
 
-    		b, _ := io.Copy(img, resp.Body)
-    		fmt.Println("File size: ", b)	
+		extraHeaders := map[string]string{
+			"Content-Disposition": `attachment; filename="image.jpg"`,
+		}
 
-		//extraHeaders := map[string]string{
-			//"Content-Disposition": `attachment; filename="gopher.png"`,
-		//}
+		out := new(bytes.Buffer)
+		img, _ := jpeg.Decode(reader)
+		data := []byte(c.PostForm("secretMessage"))
+		jsteg.Hide(out, img, data, nil)
 
-		//c.DataFromReader(http.StatusOK, resp.ContentLength, resp.Header.Get("Content-Type"), resp.Body, extraHeaders)
-
-		c.JSON(http.StatusOK, gin.H{"response": c.PostForm("secretMessage"), "rand": futureImageUrl, "fileSize": b})
+		c.DataFromReader(http.StatusOK, int64(out.Len()), "image/jpeg", out, extraHeaders)
 	})
 
 	router.Static("/.well-known/pki-validation", "2FF0A0CC6029BB26BB49BEDD95CE23F8.txt")
