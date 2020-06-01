@@ -12,7 +12,6 @@ require (
 	github.com/manucorporat/sse v0.0.0-20150604091100-c142f0f1baea // indirect
 	github.com/mattn/go-colorable v0.0.0-20150625154642-40e4aedc8fab // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/zhexuany/wordGenerator v0.0.0-20161102120352-1f13e790d534
 	golang.org/x/sys v0.0.0-20200523222454-059865788121 // indirect
 	golang.org/x/tools v0.0.0-20200601175630-2caf76543d99 // indirect
 	gopkg.in/bluesuncorp/validator.v5 v5.9.1 // indirect

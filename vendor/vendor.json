@@ -1,0 +1,13 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "q/8xzsnfxdOCFQfPZdcVS1IiAAE=",
+			"path": "lukechampine.com/jsteg",
+			"revision": "bde9f913a965fb467ce554883b151c9bccddb7ef",
+			"revisionTime": "2019-06-02T01:45:22Z"
+		}
+	],
+	"rootPath": "midnight-cypher"
+}
