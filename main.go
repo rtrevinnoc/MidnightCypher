@@ -144,7 +144,7 @@ func get_random_image() (string) {
 		"zen",
 	}
 
-	imageUrlComponents := []string{"http://192.168.1.73/_answer?query=", left[rand.Intn(93)]}
+	imageUrlComponents := []string{"http://wearebuildingthefuture.com/_answer?query=", left[rand.Intn(93)]}
 	imageUrl := strings.Join(imageUrlComponents, "")
 
 	response, error1 := http.Get(imageUrl)
