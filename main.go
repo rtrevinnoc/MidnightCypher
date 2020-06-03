@@ -44,7 +44,7 @@ type FUTUREResult struct {
 	Result FUTUREResponse
 }
 
-func get_random_image() (string) {
+func get_random_image(client http.Client) (string) {
 
 	rand.Seed(time.Now().UnixNano())
 
@@ -147,7 +147,7 @@ func get_random_image() (string) {
 	imageUrlComponents := []string{"http://wearebuildingthefuture.com/_answer?query=", left[rand.Intn(93)]}
 	imageUrl := strings.Join(imageUrlComponents, "")
 
-	response, error1 := http.Get(imageUrl)
+	response, error1 := client.Get(imageUrl)
 	if error1 != nil {
 		log.Fatal(error1)
 	}
@@ -179,6 +179,10 @@ func main() {
 	router.Static("/static", "static")
 	router.MaxMultipartMemory = 8 << 20
 
+	client := http.Client{
+    		Timeout: 200 * time.Second,
+	}
+
 	router.GET("/", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "index.tmpl.html", nil)
 	})
@@ -196,7 +200,7 @@ func main() {
 	})
 
 	router.POST("/encode", func(c *gin.Context) {
-		futureImageUrl := get_random_image()
+		futureImageUrl := get_random_image(client)
 
 		response, err := http.Get(futureImageUrl)
 		if err != nil || response.StatusCode != http.StatusOK {
@@ -207,7 +211,7 @@ func main() {
 		reader := response.Body
 		for ok := true; ok; ok = ( !(strings.HasSuffix(response.Header.Get("Content-Type"), "jpeg")) ) {
 			fmt.Println("here1")
-			futureImageUrl = get_random_image()
+			futureImageUrl = get_random_image(client)
 			response, err = http.Get(futureImageUrl)
 			if err != nil || response.StatusCode != http.StatusOK {
 				c.Status(http.StatusServiceUnavailable)
