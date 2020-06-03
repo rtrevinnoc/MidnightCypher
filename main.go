@@ -44,7 +44,9 @@ type FUTUREResult struct {
 	Result FUTUREResponse
 }
 
-func main() {
+func get_random_image() (string) {
+
+	rand.Seed(time.Now().UnixNano())
 
 	left := [...]string{
 		"admiring",
@@ -142,7 +144,28 @@ func main() {
 		"zen",
 	}
 
-	rand.Seed(time.Now().UnixNano())
+	imageUrlComponents := []string{"http://192.168.1.73/_answer?query=", left[rand.Intn(93)]}
+	imageUrl := strings.Join(imageUrlComponents, "")
+
+	response, error1 := http.Get(imageUrl)
+	if error1 != nil {
+		log.Fatal(error1)
+	}
+	defer response.Body.Close()
+
+	responseData, error2 := ioutil.ReadAll(response.Body)
+	if error2 != nil {
+		log.Fatal(error2)
+	}
+
+	futureResult := new(FUTUREResult)
+	json.Unmarshal([]byte(responseData), futureResult)
+	listOfImages := futureResult.Result.Images
+	numberOfImages := len(listOfImages)
+	return listOfImages[rand.Intn(numberOfImages)]
+}
+
+func main() {
 
 	port := os.Getenv("PORT")
 
@@ -173,25 +196,7 @@ func main() {
 	})
 
 	router.POST("/encode", func(c *gin.Context) {
-		imageUrlComponents := []string{"http://wearebuildingthefuture.com/_answer?query=", left[rand.Intn(93)]}
-		imageUrl := strings.Join(imageUrlComponents, "")
-
-		response, error1 := http.Get(imageUrl)
-		if error1 != nil {
-			log.Fatal(error1)
-		}
-		defer response.Body.Close()
-
-		responseData, error2 := ioutil.ReadAll(response.Body)
-		if error2 != nil {
-			log.Fatal(error2)
-		}
-
-		futureResult := new(FUTUREResult)
-		json.Unmarshal([]byte(responseData), futureResult)
-		listOfImages := futureResult.Result.Images
-		numberOfImages := len(listOfImages) 
-		futureImageUrl := listOfImages[rand.Intn(numberOfImages)]
+		futureImageUrl := get_random_image()
 
 		response, err := http.Get(futureImageUrl)
 		if err != nil || response.StatusCode != http.StatusOK {
@@ -200,6 +205,16 @@ func main() {
 		}
 
 		reader := response.Body
+		for ok := true; ok; ok = ( !(strings.HasSuffix(response.Header.Get("Content-Type"), "jpeg")) ) {
+			fmt.Println("here1")
+			futureImageUrl = get_random_image()
+			response, err = http.Get(futureImageUrl)
+			if err != nil || response.StatusCode != http.StatusOK {
+				c.Status(http.StatusServiceUnavailable)
+				return
+			}
+			reader = response.Body
+		}
 
 		extraHeaders := map[string]string{
 			"Content-Disposition": `attachment; filename="image.jpg"`,
