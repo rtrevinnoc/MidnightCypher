@@ -180,7 +180,7 @@ func main() {
 	router.MaxMultipartMemory = 8 << 20
 
 	client := http.Client{
-    		Timeout: 200 * time.Second,
+		Timeout: 10000 * time.Second,
 	}
 
 	router.GET("/", func(c *gin.Context) {
