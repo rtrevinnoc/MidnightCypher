@@ -19,25 +19,8 @@ import (
 	"strings"
 )
 
-type Urls struct {
-	Body string
-	Domain string
-	Header string
-	Language string
-	Url string
-}
-
 type FUTUREResponse struct {
-	Answer string
-	Chatbot int
-	Corrected string
 	Images []string
-	Map string
-	NRes int
-	Reply string
-	SmallSummary string
-	Time float64
-	Urls []Urls
 }
 
 type FUTUREResult struct {
@@ -144,7 +127,7 @@ func get_random_image(client http.Client) (string) {
 		"zen",
 	}
 
-	imageUrlComponents := []string{"http://wearebuildingthefuture.com/_answer?query=", left[rand.Intn(93)]}
+	imageUrlComponents := []string{"http://wearebuildingthefuture.com/_midnightcypher?query=", left[rand.Intn(93)]}
 	imageUrl := strings.Join(imageUrlComponents, "")
 
 	response, error1 := client.Get(imageUrl)
