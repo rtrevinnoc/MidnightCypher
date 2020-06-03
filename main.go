@@ -180,7 +180,7 @@ func main() {
 	router.MaxMultipartMemory = 8 << 20
 
 	client := http.Client{
-		Timeout: 10000 * time.Second,
+		Timeout: 30 * time.Second,
 	}
 
 	router.GET("/", func(c *gin.Context) {
@@ -202,7 +202,7 @@ func main() {
 	router.POST("/encode", func(c *gin.Context) {
 		futureImageUrl := get_random_image(client)
 
-		response, err := http.Get(futureImageUrl)
+		response, err := client.Get(futureImageUrl)
 		if err != nil || response.StatusCode != http.StatusOK {
 			c.Status(http.StatusServiceUnavailable)
 			return
@@ -210,9 +210,8 @@ func main() {
 
 		reader := response.Body
 		for ok := true; ok; ok = ( !(strings.HasSuffix(response.Header.Get("Content-Type"), "jpeg")) ) {
-			fmt.Println("here1")
 			futureImageUrl = get_random_image(client)
-			response, err = http.Get(futureImageUrl)
+			response, err = client.Get(futureImageUrl)
 			if err != nil || response.StatusCode != http.StatusOK {
 				c.Status(http.StatusServiceUnavailable)
 				return
